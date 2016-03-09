@@ -1,0 +1,73 @@
+<div id="page-wrapper">
+
+	<!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            My Groups  <small>BulkSMS</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"> </i> Add / Remove Groups
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                <div class="container">
+                <div class="col-lg-10">
+                    {if isset($addSuccess)}     
+                    <div class="alert alert-success">
+                    <strong>Success!</strong>
+                    <p>A new group "{echo $gName}" has been added!
+                    </div>
+                    {/if}
+
+                    <br><br>                    
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal">+Group</button>
+                    
+
+                                    <div id="myModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Create a group</h4>
+                              </div>
+                              <div class="modal-body">
+                                            <form method="POST">
+                                            <div class="form-group">                                
+                                                        <input class="form-control" name="name" required type="text" maxlength="100" placeholder="Enter group name">
+                                                </div>
+                                                <div class="text-center">
+                                                        <button type="submit" name="add" value="add" class="btn btn-success">Add</button>
+                                                </div>
+                                                   </form>
+                        </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                                               </div>
+                                           </div>
+                                            </div>
+               
+                <!-- /.row -->
+                   <br><h4>My Saved Groups:<br></h4>
+                   <div class="list-groups">
+                    {if !empty($groups)}
+                    {foreach $g in $groups}
+                    <a id="group{echo $g->id}" class="list-group-item">
+                    <h5 style="display: inline-block;">{echo $g->id} -> {echo $g->name}</h5>
+                    <button name="delete" value="delete" 
+                    onclick="if(window.confirm('This action is irreversible. Proceed to delete group?'))deleteGroup('{echo $g->id}');" class="btn pull-right btm-md btn-danger">Delete</button>
+                    </a>
+                    {/foreach}
+                    {/if}
+                </div>
+</div>
+</div>
+</div>
+</div>
+<script src="public/assets/js/group.js"></script>

@@ -1,0 +1,116 @@
+<!--<div id="page-wrapper">
+
+	<!-- Page Heading --
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Dashboard
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="./">Home</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-sign-in"></i> Login
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row --
+
+    <div class="container-fluid">
+<!-- Main jumbotron for a primary marketing message or call to action --
+        <div class="jumbotron">
+            {if (isset($user) && !empty($user))}
+            <h1>Welcome {echo $user->name}!</h1>
+            <p>Proceed to <a href="./dashboard">Dashboard</a> to send SMS or to <a href="./group">Group Management</a>.</p>
+            {/if}
+            {else}
+            <h1>Welcome guest!</h1>
+            <p>Proceed to <a href="./login">login</a> or <a href="./register">register</a>.</p>
+            {/else}
+        </div>
+    </div>
+</div>
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login | BulkSMS</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="./public/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./public/assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./public/assets/css/form-elements.css">
+        <link rel="stylesheet" href="./public/assets/css/login.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="public/assets/ico/favicon.png">
+
+    </head>
+
+    <body>
+
+
+       <!-- Top content -->
+        <div class="top-content">
+            
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>BulkSMS</strong></h1>
+                            <div class="description">
+                                    {if (isset($user) && !empty($user))}
+                                    <h1>Welcome {echo $user->name}!</h1>
+                                    <div class="form-top">
+                                        <div class="text-center">
+                                            <br>
+                                            <p>Proceed to <a class="btn btn-lg btn-info" href="./dashboard">Dashboard</a> to send SMS!</p>
+                                        </div>
+                                    </div>
+                                    {/if}
+                                    {else}
+                                    <h1>Welcome guest!</h1>
+                                    <p>Send marketing SMSes in a breeze!</p><br><br>
+                                    <div class="form-top">
+                                        <div class="text-center">
+                                            <br>
+                                            <p>Proceed to <a class="btn btn-lg btn-link-1 btn-link-1-twitter" href="./login">
+                                            <i class="fa fa-sign-in"></i> Login</a></p>
+                                        </div>
+                                    </div>
+                                    {/else}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="./public/assets/js/jquery.js"></script>
+        <script src="./public/assets/js/bootstrap.min.js"></script>
+        <script src="./public/assets/js/jquery.backstretch.min.js"></script>
+        <script src="./public/assets/js/home.js"></script>
+
+
+    </body>
+
+</html>

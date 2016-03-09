@@ -1,0 +1,90 @@
+<div id="page-wrapper">
+
+	<!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            My Contacts <small>SMS Overview</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Add / Remove Contacts
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                <div class="col-lg-10 ">
+                    {if isset($successCount)}   
+                    <div class="alert alert-success">
+                    <strong>Success!</strong>
+                     <p>New {echo $successCount} contacts have been added!</p>
+                    </div>
+                    {/if}
+                    {if isset($dSuccessCount)}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>
+                        <p>{echo $dSuccessCount} contacts have been removed!</p>
+                    </div>
+                    {/if}   
+
+                    <br><br>                    
+                    <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myModal">+Contacts</button>
+
+
+                                    <div id="myModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Add batch contacts</h4>
+                              </div>
+                              <div class="modal-body">
+                                            <form enctype="multipart/form-data" method="POST">
+                                            <div class="form-group">            
+                                             <label>Select a CSV file:</label><input type='file' name='userFile'><br>
+                                             <label>Or enter multiple contact numbers (comma-separated):</label>
+                                                        <textarea class="form-control" name="numbers" placeholder="Enter numbers" rows="3"></textarea>
+
+                                                        <label>Select a group to add these contacts to:</label>
+                                                        <select name="gid" class="form-control">
+                                                            {if !empty($groups)}
+                                                                {foreach $g in $groups}
+                                                               <option value="{echo $g->id}">{echo $g->id} :: {echo $g->name}</option>
+                                                               {/foreach}
+                                                            {/if}
+                                                        </select>
+                                                </div>
+                                                        <button type="submit" name="add" value="add" class="btn btn-default">Add</button>
+                                                   </form>
+                        </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                                               </div>
+                                           </div>
+                                            </div>
+
+                           <br><h4>My Saved Contacts:<br></h4>     
+                           
+                           <div class="list-groups">
+                    {if !empty($groups)}
+                    {foreach $g in $groups}
+                    <a id="group{echo $g->id}" class="list-group-item">
+                    <h5 style="display: inline-block;">{echo $g->id} -> {echo $g->name} ( {echo $contacts[$g->id]} contacts )</h5>
+                    <button name="delete" value="delete" 
+                    onclick="if(window.confirm('This action is irreversible. Proceed to delete all contacts of this group?'))deleteContactGroup('{echo $g->id}');" class="btn pull-right btm-md btn-danger">Delete</button>
+                    </a>
+                    {/foreach}
+                    {/if}
+                </div>            
+
+                    
+                    </div>
+                </div>
+                <!-- /.row -->
+
+</div>
+<script src="public/assets/js/group.js"></script>
